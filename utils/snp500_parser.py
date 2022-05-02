@@ -64,3 +64,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     snp500_stock_names = si.tickers_sp500()
     parse_all_tickers(snp500_stock_names, csv_name=args.csv_name, limit=args.limit)
+
