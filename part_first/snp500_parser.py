@@ -45,7 +45,7 @@ def write_data_to_csv(data: pd.DataFrame, csv_name='snp500.csv', create_csv=Fals
             writer.writerow(list(row.values()))
 
 
-def parse_all_tickers(stock_names_list: list, csv_name='spn500.csv', limit=float('inf')):
+def parse_all_tickers(stock_names_list: list, csv_name='snp500.csv', limit=float('inf')):
     if not stock_names_list:
         return
     if limit < float('inf'):
@@ -59,7 +59,7 @@ def parse_all_tickers(stock_names_list: list, csv_name='spn500.csv', limit=float
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-csv_name', dest='csv_name', type=str, default='snp_500.csv', help='Csv table name to same parsed stock data.')
+    parser.add_argument('-csv_name', dest='csv_name', type=str, default='snp500.csv', help='Csv table name to same parsed stock data.')
     parser.add_argument('-limit', dest='limit',  type=int, default=float('inf'), help='Number of stocks to be parsed')
     args = parser.parse_args()
     snp500_stock_names = si.tickers_sp500()
