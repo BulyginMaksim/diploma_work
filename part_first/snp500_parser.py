@@ -2,7 +2,6 @@ import csv
 import argparse
 import pandas as pd
 import numpy as np
-from tqdm.notebook import tqdm
 import yfinance as yf
 import yahoo_fin.stock_info as si
 
@@ -37,11 +36,7 @@ def parse_single_ticker(stock_name, period_months=24):
 def write_data_to_csv(data: pd.DataFrame, csv_name='snp500.csv', create_csv=False):
     MODE = 'w' if create_csv else 'a'
     with open(csv_name, MODE, newline='') as csvfile:
-        writer = csv.writer(
-            csvfile,
-            delimiter=',',
-            # quotechar='|', quoting=csv.QUOTE_MINIMAL
-        )
+        writer = csv.writer(csvfile, delimiter=',')
         if create_csv:
             writer.writerow(data.T.index.tolist())
         for _, row in data.T.to_dict().items():
